@@ -33,7 +33,7 @@ class FileStorage:
                     new_dict[key] = value
             return new_dict
         return self.__objects
-    
+
     def get(self, cls, id):
         """retrieves an object of a class with id"""
         if cls is not None:
