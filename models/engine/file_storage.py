@@ -33,7 +33,7 @@ class FileStorage:
                     new_dict[key] = value
             return new_dict
         return self.__objects
-    
+
     def get(self, cls, id):
         """retrieves an object of a class with id"""
         if cls is not None:
@@ -46,7 +46,7 @@ class FileStorage:
             if res:
                 return res[0]
         return None
-    
+
     def count(self, cls=None):
         """retrieves the number of objects of a class or all (if cls==None)"""
         return len(self.all(cls))
