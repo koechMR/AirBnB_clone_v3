@@ -16,7 +16,8 @@ from models import storage
 
 
 # Route for retrieving all City objects of a specific State
-@app_views.route('/states/<state_id>/cities', methods=['GET'], strict_slashes=False)
+@app_views.route('/states/<state_id>/cities',
+                 methods=['GET'], strict_slashes=False)
 def get_cities_by_state(state_id):
     '''
     Retrieves a list of all City objects of a State
@@ -27,7 +28,7 @@ def get_cities_by_state(state_id):
         # Return 404 error if the State object is not found
         abort(404)
 
-    # Get all City objects associated with the State and convert them to dictionaries
+    # Get all City objects associated with the State and convert
     cities = [city.to_dict() for city in state.cities]
     return jsonify(cities)
 
@@ -47,8 +48,9 @@ def get_city(city_id):
         # Return 404 error if the City object is not found
         abort(404)
 
+
 # Route for deleting a specific City object by ID
-	@app_views.route('/cities/<city_id>', methods=['DELETE'])
+@app_views.route('/cities/<city_id>', methods=['DELETE'])
 def delete_city(city_id):
     '''
     Deletes a City object by ID
@@ -57,20 +59,19 @@ def delete_city(city_id):
     city = storage.get(City, city_id)
     if city:
 
-
         # Delete the City object from the storage and save changes
         storage.delete(city)
         storage.save()
-
-
         # Return an empty JSON with a 200 status code
         return jsonify({}), 200
     else:
         # Return 404 error if the City object is not found
         abort(404)
 
+
 # Route for creating a new City object under a specific State
-	@app_views.route('/states/<state_id>/cities', methods=['POST'], strict_slashes=False)
+@app_views.route('/states/<state_id>/cities',
+                 methods=['POST'], strict_slashes=False)
 def create_city(state_id):
     '''
     Creates a new City object under a specific State
@@ -98,8 +99,9 @@ def create_city(state_id):
     city = City(**data)
     # Save the City object to the storage
     city.save()
-    # Return the newly created City object in JSON format with a 201 status code
+    # Return the newly created City object in JSON format
     return jsonify(city.to_dict()), 201
+
 
 # Route for updating an existing City object by ID
 @app_views.route('/cities/<city_id>', methods=['PUT'], strict_slashes=False)
@@ -111,8 +113,7 @@ def update_city(city_id):
     city = storage.get(City, city_id)
     if city:
 
-
-    # Check if the request data is in JSON format
+        # Check if the request data is in JSON format
         if not request.get_json():
             # Return 400 error if the request data is not in JSON format
             abort(400, 'Not a JSON')
