@@ -1,3 +1,8 @@
+#!/usr/bin/python3
+"""
+Contains the DBStorage class
+"""
+
 from models.base_model import BaseModel, Base
 from models.city import City
 from models.state import State
@@ -21,6 +26,9 @@ classes = {
 
 
 class DBStorage:
+    """
+    Represents the interface to interact with the database storage.
+    """
     __engine = None
     __session = None
 
