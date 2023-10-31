@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-
 '''
 Create new view for City objects - handles all default RESTful API actions
 '''
@@ -16,8 +15,7 @@ from models import storage
 
 
 # Route for retrieving all City objects of a specific State
-@app_views.route('/states/<state_id>/cities',
-                 methods=['GET'], strict_slashes=False)
+@app_views.route('/states/<state_id>/cities', methods=['GET'], strict_slashes=False)
 def get_cities_by_state(state_id):
     '''
     Retrieves a list of all City objects of a State
@@ -58,7 +56,6 @@ def delete_city(city_id):
     # Get the City object with the given ID from the storage
     city = storage.get(City, city_id)
     if city:
-
         # Delete the City object from the storage and save changes
         storage.delete(city)
         storage.save()
@@ -70,8 +67,7 @@ def delete_city(city_id):
 
 
 # Route for creating a new City object under a specific State
-@app_views.route('/states/<state_id>/cities',
-                 methods=['POST'], strict_slashes=False)
+@app_views.route('/states/<state_id>/cities', methods=['POST'], strict_slashes=False)
 def create_city(state_id):
     '''
     Creates a new City object under a specific State
@@ -112,7 +108,6 @@ def update_city(city_id):
     # Get the City object with the given ID from the storage
     city = storage.get(City, city_id)
     if city:
-
         # Check if the request data is in JSON format
         if not request.get_json():
             # Return 400 error if the request data is not in JSON format
