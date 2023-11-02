@@ -15,7 +15,8 @@ from models import storage
 
 
 # Route for retrieving all City objects of a specific State
-@app_views.route('/states/<state_id>/cities', methods=['GET'], strict_slashes=False)
+@app_views.route('/states/<state_id>/cities',
+                 methods=['GET'], strict_slashes=False)
 def get_cities_by_state(state_id):
     '''
     Retrieves a list of all City objects of a State
@@ -67,7 +68,8 @@ def delete_city(city_id):
 
 
 # Route for creating a new City object under a specific State
-@app_views.route('/states/<state_id>/cities', methods=['POST'], strict_slashes=False)
+@app_views.route('/states/<state_id>/cities', methods=['POST'],
+                 strict_slashes=False)
 def create_city(state_id):
     '''
     Creates a new City object under a specific State

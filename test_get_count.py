@@ -4,7 +4,7 @@
 from models import storage
 from models.state import State
 
-print("All objects: {}".format(storage.count()))
+print("All objects: {}".format(storage.count(User)))
 print("State objects: {}".format(storage.count(State)))
 
 first_state_id = list(storage.all(State).values())[0].id
