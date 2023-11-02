@@ -25,6 +25,7 @@ classes = {
     'User': User
 }
 
+
 class DBStorage:
     """
     Represents the interface to interact with the database storage.
